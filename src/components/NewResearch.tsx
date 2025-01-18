@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Youtube, MessageCircle, Search } from 'lucide-react';
+import React, { useState } from "react";
+import { Youtube, MessageCircle, Search } from "lucide-react";
+import { KeywordTable } from "./KeywordTable";
 
 interface SourceOption {
   id: string;
@@ -10,22 +11,22 @@ interface SourceOption {
 
 const sources: SourceOption[] = [
   {
-    id: 'youtube',
+    id: "youtube",
     icon: <Youtube size={24} className="text-red-500" />,
-    title: 'YouTube Analysis',
-    description: 'Analyze YouTube channels, videos, and audience engagement.',
+    title: "YouTube Analysis",
+    description: "Analyze YouTube channels, videos, and audience engagement.",
   },
   {
-    id: 'social',
+    id: "social",
     icon: <MessageCircle size={24} className="text-blue-500" />,
-    title: 'Social Listening',
-    description: 'Monitor social media conversations and sentiment.',
+    title: "Social Listening",
+    description: "Monitor social media conversations and sentiment.",
   },
   {
-    id: 'competitor',
+    id: "competitor",
     icon: <Search size={24} className="text-purple-500" />,
-    title: 'Competitor Research',
-    description: 'Analyze competitor strategies and performance.',
+    title: "Competitor Research",
+    description: "Analyze competitor strategies and performance.",
   },
 ];
 
@@ -34,8 +35,9 @@ export const NewResearch: React.FC = () => {
 
   return (
     <div className="p-8">
+      <KeywordTable />
       <h1 className="text-2xl font-bold text-gray-900 mb-8">New Research</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {sources.map((source) => (
           <button
@@ -43,13 +45,15 @@ export const NewResearch: React.FC = () => {
             onClick={() => setSelectedSource(source.id)}
             className={`p-6 rounded-xl border transition-all ${
               selectedSource === source.id
-                ? 'border-indigo-500 bg-indigo-50'
-                : 'border-gray-200 hover:border-indigo-200 hover:bg-gray-50'
+                ? "border-indigo-500 bg-indigo-50"
+                : "border-gray-200 hover:border-indigo-200 hover:bg-gray-50"
             }`}
           >
             <div className="flex flex-col items-center text-center">
               {source.icon}
-              <h3 className="mt-4 font-semibold text-gray-900">{source.title}</h3>
+              <h3 className="mt-4 font-semibold text-gray-900">
+                {source.title}
+              </h3>
               <p className="mt-2 text-sm text-gray-500">{source.description}</p>
             </div>
           </button>
